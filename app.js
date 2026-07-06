@@ -731,13 +731,13 @@ function renderMetrics() {
     const deducted = movements.filter((t) => t.transaction_type === "deduction").reduce((s, t) => s + Number(t.amount || 0), 0);
     const paid = movements.filter((t) => t.transaction_type === "payout").reduce((s, t) => s + Number(t.amount || 0), 0);
     const net = Math.max(gross - deducted - paid, 0);
-    return `<tr>
+    return `<tr class="accounting-row-card">
       <td><strong>${barber.name}</strong><small>${availabilityLabel(barber)}</small></td>
-      <td>${done.length}</td>
-      <td>${money(gross)}</td>
-      <td>${money(deducted)}</td>
-      <td>${money(paid)}</td>
-      <td><b class="net-value">${money(net)}</b></td>
+      <td data-label="Atendidas">${done.length}</td>
+      <td data-label="Ingresos">${money(gross)}</td>
+      <td data-label="Descuentos">${money(deducted)}</td>
+      <td data-label="Liquidado">${money(paid)}</td>
+      <td data-label="Neto"><b class="net-value">${money(net)}</b></td>
       <td>
         <div class="row-actions">
           <button class="small-btn" data-settle="deduction" data-prof="${barber.id}">Descontar</button>
@@ -795,14 +795,18 @@ function renderAppointments() {
         <small class="status-pill">${statusLabel(appt.status)}</small>
         <strong>${money(appt.total_price || appt.service_price || 0)}</strong>
       </div>
-      <select data-status="${appt.id}">
-        ${["scheduled", "confirmed", "completed", "cancelled", "no_show"].map((status) => `<option ${appt.status === status ? "selected" : ""} value="${status}">${statusLabel(status)}</option>`).join("")}
-      </select>
+      <label class="status-select">
+        <i data-lucide="sparkle"></i>
+        <select data-status="${appt.id}" aria-label="Cambiar estado de cita">
+          ${["scheduled", "confirmed", "completed", "cancelled", "no_show"].map((status) => `<option ${appt.status === status ? "selected" : ""} value="${status}">${statusLabel(status)}</option>`).join("")}
+        </select>
+      </label>
     </article>
   `).join("") || `<span>No hay reservas con esos filtros.</span>`;
   $$("[data-open-appt]").forEach((card) => card.addEventListener("click", () => openAppointmentDetail(card.dataset.openAppt)));
   $$("[data-status]").forEach((select) => {
     select.addEventListener("click", (event) => event.stopPropagation());
+    select.closest(".status-select")?.addEventListener("click", (event) => event.stopPropagation());
     select.addEventListener("change", () => updateAppointmentStatus(select.dataset.status, select.value));
   });
   lucide.createIcons();
