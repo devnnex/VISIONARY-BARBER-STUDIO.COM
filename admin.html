@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BarberBook Pro Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="side-menu" id="sideMenu" aria-label="Menu principal">
+        <div class="brand-row">
+          <div class="brand-mark" id="menuLogo">BB</div>
+          <div>
+            <strong id="menuShopName">BarberBook Pro</strong>
+            <span>Reservas premium</span>
+          </div>
+        </div>
+        <nav class="nav-panel active" id="mainNav">
+          <button class="menu-link active" data-view="home"><i data-lucide="home"></i><span>Inicio</span></button>
+          <button class="menu-link" data-view="booking"><i data-lucide="calendar-check"></i><span>Reservar</span></button>
+          <button class="menu-link" data-view="plans"><i data-lucide="gem"></i><span>Planes</span></button>
+          <button class="menu-link" data-view="admin"><i data-lucide="layout-dashboard"></i><span>Administracion</span></button>
+        </nav>
+        <nav class="nav-panel admin-nav" id="adminNav">
+          <button class="menu-link back-link" id="backFromAdmin" type="button"><i data-lucide="arrow-left"></i><span>Regresar</span></button>
+          <button class="admin-tab active" data-admin="dashboard"><i data-lucide="activity"></i><span>Resumen</span></button>
+          <button class="admin-tab" data-admin="appointments"><i data-lucide="calendar-days"></i><span>Citas</span></button>
+          <button class="admin-tab" data-admin="professionals"><i data-lucide="users"></i><span>Profesionales</span></button>
+          <button class="admin-tab" data-admin="services"><i data-lucide="scissors"></i><span>Servicios</span></button>
+          <button class="admin-tab" data-admin="branding"><i data-lucide="paintbrush"></i><span>Personalizacion</span></button>
+        </nav>
+        <div class="theme-box">
+          <span>Modo noche</span>
+          <label class="switch">
+            <input id="themeToggle" type="checkbox" />
+            <b></b>
+          </label>
+        </div>
+      </aside>
+
+      <div class="overlay" id="overlay"></div>
+
+      <main class="main">
+        <header class="topbar">
+          <button class="icon-btn" id="openMenu" aria-label="Abrir menu"><i data-lucide="menu"></i></button>
+          <div class="top-brand">
+            <div class="mini-logo" id="topLogo">BB</div>
+            <div>
+              <span>Bienvenido a</span>
+              <strong id="topShopName">BarberBook Pro</strong>
+            </div>
+          </div>
+          <button class="icon-btn" id="goAdmin" aria-label="Administracion"><i data-lucide="bell"></i><em id="notifDot"></em></button>
+        </header>
+
+        <section class="view active" id="homeView">
+          <div class="hero">
+            <img id="heroImage" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1100&q=80" alt="Barberia" />
+            <div class="hero-content">
+              <p id="heroKicker">Estilo, precision y agenda inteligente</p>
+              <h1 id="heroTitle">Reserva tu corte sin esperar.</h1>
+              <button class="pill-btn primary" data-view="booking"><i data-lucide="scissors"></i>Reservar ahora</button>
+            </div>
+          </div>
+
+          <div class="quick-grid">
+            <article>
+              <i data-lucide="clock-3"></i>
+              <strong>Disponibilidad real</strong>
+              <span>Los horarios reservados se bloquean al instante.</span>
+            </article>
+            <article>
+              <i data-lucide="user-round-check"></i>
+              <strong>Barberos expertos</strong>
+              <span>El cliente elige profesional, fecha, hora y servicio.</span>
+            </article>
+            <article>
+              <i data-lucide="chart-no-axes-combined"></i>
+              <strong>Admin inteligente</strong>
+              <span>Control de citas, servicios atendidos y contabilidad.</span>
+            </article>
+          </div>
+
+        </section>
+
+        <section class="view" id="bookingView">
+          <div class="section-head">
+            <div>
+              <span>Reserva mobile-first</span>
+              <h2>Agenda tu cita</h2>
+            </div>
+            <button class="ghost-btn" id="resetBooking"><i data-lucide="rotate-ccw"></i>Reiniciar</button>
+          </div>
+
+          <div class="stepper" id="stepper">
+            <span class="done">1</span><span>2</span><span>3</span><span>4</span>
+          </div>
+
+          <div class="booking-panel">
+            <div class="booking-step active" data-step="1">
+              <h3>Elige tu barbero</h3>
+              <div class="barber-list" id="barberList"></div>
+            </div>
+
+            <div class="booking-step" data-step="2">
+              <h3>Elige fecha y hora disponible</h3>
+              <div class="date-strip" id="dateStrip"></div>
+              <div class="time-grid" id="timeGrid"></div>
+            </div>
+
+            <div class="booking-step" data-step="3">
+              <h3>Selecciona el servicio</h3>
+              <div class="service-list" id="serviceList"></div>
+            </div>
+
+            <div class="booking-step" data-step="4">
+              <h3>Confirma tus datos</h3>
+              <form class="client-form" id="bookingForm">
+                <label>Nombre completo<input id="customerName" required autocomplete="name" /></label>
+                <label>Numero de celular<input id="customerPhone" required autocomplete="tel" inputmode="tel" /></label>
+                <button class="pill-btn primary wide" type="submit"><i data-lucide="calendar-check"></i>Confirmar reserva</button>
+              </form>
+              <div class="summary-card" id="bookingSummary"></div>
+            </div>
+          </div>
+          <div class="booking-actions">
+            <button class="ghost-btn" id="prevStep" type="button"><i data-lucide="arrow-left"></i>Atras</button>
+            <button class="pill-btn primary" id="nextStep" type="button">Continuar<i data-lucide="arrow-right"></i></button>
+          </div>
+        </section>
+
+        <section class="view" id="plansView">
+          <section class="plans-section premium-plans">
+            <div class="section-head">
+              <div>
+                <span>Planes para barberias</span>
+                <h2>Elige como quieres crecer</h2>
+              </div>
+            </div>
+            <div class="plans-grid">
+              <article class="plan-card platinum">
+                <div class="plan-badge">Platino mensual</div>
+                <div class="plan-top">
+                  <span>Mensual</span>
+                  <strong>$120.000 COP</strong>
+                  <small>por mes</small>
+                </div>
+                <p>Ideal para empezar rapido, validar el sistema y mantener soporte continuo sin una inversion alta inicial.</p>
+                <ul>
+                  <li>Reservas online con bloqueo automatico.</li>
+                  <li>Panel administrativo responsive.</li>
+                  <li>Personalizacion de nombre, logo e imagenes.</li>
+                  <li>Actualizaciones y mejoras incluidas.</li>
+                </ul>
+                <button class="pill-btn primary wide"><i data-lucide="credit-card"></i>Elegir mensual</button>
+              </article>
+              <article class="plan-card gold featured">
+                <div class="plan-badge">Oro premium</div>
+                <div class="plan-top">
+                  <span>Pago unico</span>
+                  <strong>$2.200.000 COP</strong>
+                  <small>licencia de implementacion</small>
+                </div>
+                <p>Para barberias que quieren una presencia propia, mas solida y con mayor sensacion de producto exclusivo.</p>
+                <ul>
+                  <li>Implementacion personalizada para la marca.</li>
+                  <li>Base Supabase configurada y lista para operar.</li>
+                  <li>Experiencia premium con modo claro y noche.</li>
+                  <li>Mayor control del sistema y entrega completa.</li>
+                </ul>
+                <button class="pill-btn primary wide"><i data-lucide="gem"></i>Elegir pago unico</button>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <section class="view" id="adminView">
+          <div class="admin-layout">
+            <div class="admin-content">
+              <form class="panel admin-login" id="adminLoginForm">
+                <h3>Acceso administrador</h3>
+                <label>Email<input id="adminEmail" type="email" autocomplete="email" /></label>
+                <label>Contrasena
+                  <span class="password-field">
+                    <input id="adminPassword" type="password" autocomplete="current-password" />
+                    <button class="password-toggle" id="toggleAdminPassword" type="button" aria-label="Ver contrasena"><i data-lucide="eye"></i></button>
+                  </span>
+                </label>
+                <button class="pill-btn primary" type="submit"><i data-lucide="log-in"></i>Entrar</button>
+                <button class="ghost-btn" id="adminLogout" type="button"><i data-lucide="log-out"></i>Salir</button>
+                <p class="auth-hint" id="adminAuthHint"></p>
+              </form>
+              <div class="admin-lock panel" id="adminLock">
+                <i data-lucide="lock-keyhole"></i>
+                <strong>Crea el jefe o inicia sesion</strong>
+                <span>Si esta barberia aun no tiene jefe, este formulario crea el primero. Si ya existe, solo permite iniciar sesion.</span>
+              </div>
+
+              <div class="admin-secure" id="adminSecure">
+              <div class="admin-screen active" id="dashboardAdmin">
+                <div class="panel dashboard-filters">
+                  <div class="panel-head">
+                    <div>
+                      <span>Rango contable</span>
+                      <h3>Resumen financiero</h3>
+                    </div>
+                  </div>
+                  <div class="admin-tools accounting-tools">
+                    <select id="accountingRange">
+                      <option value="today">Hoy</option>
+                      <option value="yesterday">Ayer</option>
+                      <option value="7">Ultimos 7 dias</option>
+                      <option value="15">Ultimos 15 dias</option>
+                      <option value="month">Este mes</option>
+                      <option value="year">Este ano</option>
+                      <option value="custom">Dia especifico</option>
+                    </select>
+                    <input id="accountingDate" type="date" />
+                    <select id="accountingFilter"></select>
+                  </div>
+                </div>
+                <div class="metrics" id="metrics"></div>
+                <div class="panel">
+                  <div class="panel-head">
+                    <h3>Contabilidad por barbero</h3>
+                  </div>
+                  <div class="table-wrap">
+                    <table>
+                      <thead><tr><th>Barbero</th><th>Atendidas</th><th>Ingresos</th><th>Descuentos</th><th>Liquidado</th><th>Neto</th><th>Acciones</th></tr></thead>
+                      <tbody id="accountingRows"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="admin-screen" id="appointmentsAdmin">
+                <div class="panel">
+                  <div class="panel-head">
+                    <h3>Citas agendadas</h3>
+                    <button class="ghost-btn" id="seedNotification"><i data-lucide="sparkles"></i>Simular notificacion</button>
+                  </div>
+                  <div class="admin-tools">
+                    <label class="search-field"><i data-lucide="search"></i><input id="appointmentSearch" placeholder="Buscar cliente, celular o servicio" /></label>
+                    <select id="appointmentProfessionalFilter"></select>
+                    <select id="appointmentStatusFilter"></select>
+                    <span class="tool-pill" id="appointmentCount"><i data-lucide="star"></i>0 citas</span>
+                  </div>
+                  <div class="appointment-list" id="appointmentList"></div>
+                </div>
+              </div>
+
+              <div class="admin-screen" id="professionalsAdmin">
+                <div class="panel-head admin-module-head">
+                  <div>
+                    <span>Equipo y disponibilidad</span>
+                    <h3>Profesionales</h3>
+                  </div>
+                  <button class="pill-btn primary" id="openProfessionalModal" type="button"><i data-lucide="user-plus"></i>Agregar profesional</button>
+                </div>
+                <div class="admin-tools">
+                  <label class="search-field"><i data-lucide="search"></i><input id="professionalSearch" placeholder="Buscar profesional o especialidad" /></label>
+                  <span class="tool-pill" id="professionalCount">0 activos</span>
+                </div>
+                <div class="data-list" id="professionalRows"></div>
+              </div>
+
+              <div class="admin-screen" id="servicesAdmin">
+                <div class="panel-head admin-module-head">
+                  <div>
+                    <span>Catalogo premium</span>
+                    <h3>Servicios</h3>
+                  </div>
+                  <button class="pill-btn primary" id="openServiceModal" type="button"><i data-lucide="plus"></i>Agregar servicio</button>
+                </div>
+                <div class="admin-tools">
+                  <label class="search-field"><i data-lucide="search"></i><input id="serviceSearch" placeholder="Buscar servicio o precio" /></label>
+                  <span class="tool-pill" id="serviceCount">0 servicios</span>
+                </div>
+                <div class="data-list" id="serviceRows"></div>
+              </div>
+
+              <div class="admin-screen" id="brandingAdmin">
+                <form class="panel form-grid" id="brandingForm">
+                  <h3>Personalizar barberia alquilada</h3>
+                  <label>Nombre de barberia<input id="brandName" required /></label>
+                  <label>Texto principal<input id="brandHeroTitle" required /></label>
+                  <label class="file-drop brand-file"><input id="brandLogoFile" type="file" accept="image/*" /><span><img id="brandLogoPreview" alt="Preview logo" /><i data-lucide="badge-info"></i><b>Subir logo</b><small>PNG, JPG o WebP</small></span></label>
+                  <label class="file-drop brand-file wide-preview"><input id="brandHeroFile" type="file" accept="image/*" /><span><img id="brandHeroPreview" alt="Preview portada" /><i data-lucide="image-plus"></i><b>Subir portada</b><small>Imagen principal de la barberia</small></span></label>
+                  <label class="file-drop brand-file wide-preview"><input id="brandPromoFile" type="file" accept="image/*" /><span><img id="brandPromoPreview" alt="Preview promo" /><i data-lucide="sparkles"></i><b>Subir promo</b><small>Banner para campanas</small></span></label>
+                  <button class="pill-btn primary" type="submit"><i data-lucide="upload-cloud"></i>Guardar personalizacion</button>
+                </form>
+                <div class="upload-map">
+                  <article><i data-lucide="badge-info"></i><strong>Logo</strong><span>Aparece en barra superior, menu lateral y pantalla inicial.</span></article>
+                  <article><i data-lucide="image"></i><strong>Portada</strong><span>Imagen grande del inicio, ideal para mostrar el ambiente.</span></article>
+                  <article><i data-lucide="badge-percent"></i><strong>Promo</strong><span>Reservada para banners y campanas futuras.</span></article>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="toast" id="toast"></div>
+        <div class="reservation-alert" id="reservationAlert">
+          <div>
+            <span>Nueva reserva</span>
+            <strong id="reservationAlertTitle">Cita recibida</strong>
+          </div>
+          <button class="ghost-btn" id="viewNewReservation" type="button"><i data-lucide="eye"></i>Ver reserva</button>
+          <button class="icon-btn" id="stopReservationAlert" type="button" aria-label="Detener alerta"><i data-lucide="bell-off"></i></button>
+        </div>
+        <div class="loader-layer" id="loaderLayer">
+          <div class="loader-card">
+            <span class="loader-ring"></span>
+            <strong>Guardando reserva</strong>
+            <small>Estamos bloqueando tu horario en tiempo real.</small>
+          </div>
+        </div>
+        <div class="success-layer" id="successLayer">
+          <div class="success-card">
+            <span class="success-check"><i data-lucide="check"></i></span>
+            <strong>Reserva confirmada</strong>
+            <small>Tu cita quedo agendada correctamente.</small>
+            <button class="pill-btn primary" id="closeSuccess" type="button">Listo</button>
+          </div>
+        </div>
+        <div class="success-layer" id="conflictLayer">
+          <div class="success-card conflict-card">
+            <span class="success-check conflict-icon"><i data-lucide="clock-alert"></i></span>
+            <strong>Horario reservado</strong>
+            <small>Lo sentimos, ese horario acaba de ser reservado por otro cliente en este mismo momento.</small>
+            <button class="pill-btn primary" id="closeConflict" type="button">Elegir otro horario</button>
+          </div>
+        </div>
+        <div class="modal-layer" id="professionalModal">
+          <form class="modal-card form-grid" id="professionalForm">
+            <div class="modal-head">
+              <div><span>Profesional</span><h3 id="professionalModalTitle">Agregar profesional</h3></div>
+              <button class="icon-btn" type="button" data-close-modal="professionalModal" aria-label="Cerrar"><i data-lucide="x"></i></button>
+            </div>
+            <input type="hidden" id="professionalId" />
+            <label>Nombre<input id="professionalName" required /></label>
+            <label>Especialidad<input id="professionalRole" required /></label>
+            <label class="file-drop"><input id="professionalPhotoFile" type="file" accept="image/*" /><span><i data-lucide="camera"></i><b>Subir foto</b><small>Desde tu computador</small></span></label>
+            <label>Foto URL<input id="professionalPhoto" placeholder="Opcional si no subes archivo" /></label>
+            <div class="availability-box">
+              <strong>Dias disponibles</strong>
+              <div class="weekday-grid" id="professionalWeekdays">
+                <label><input type="checkbox" value="1" checked />Lun</label>
+                <label><input type="checkbox" value="2" checked />Mar</label>
+                <label><input type="checkbox" value="3" checked />Mie</label>
+                <label><input type="checkbox" value="4" checked />Jue</label>
+                <label><input type="checkbox" value="5" checked />Vie</label>
+                <label><input type="checkbox" value="6" checked />Sab</label>
+                <label><input type="checkbox" value="0" />Dom</label>
+              </div>
+            </div>
+            <label>Hora inicio<input id="professionalStartTime" type="time" value="09:00" required /></label>
+            <label>Hora fin<input id="professionalEndTime" type="time" value="18:30" required /></label>
+            <button class="pill-btn primary" type="submit"><i data-lucide="save"></i>Guardar profesional</button>
+          </form>
+        </div>
+        <div class="modal-layer" id="serviceModal">
+          <form class="modal-card form-grid" id="serviceForm">
+            <div class="modal-head">
+              <div><span>Servicio</span><h3 id="serviceModalTitle">Agregar servicio</h3></div>
+              <button class="icon-btn" type="button" data-close-modal="serviceModal" aria-label="Cerrar"><i data-lucide="x"></i></button>
+            </div>
+            <input type="hidden" id="serviceId" />
+            <label>Servicio<input id="serviceName" required /></label>
+            <label>Duracion minutos<input id="serviceDuration" type="number" min="10" step="5" required /></label>
+            <label>Precio COP<input id="servicePrice" type="number" min="0" step="1000" required /></label>
+            <button class="pill-btn primary" type="submit"><i data-lucide="save"></i>Guardar servicio</button>
+          </form>
+        </div>
+        <div class="modal-layer" id="appointmentDetailModal">
+          <div class="modal-card appointment-detail-card">
+            <div class="modal-head">
+              <div><span>Detalle de reserva</span><h3 id="appointmentDetailTitle">Servicio agendado</h3></div>
+              <button class="icon-btn" type="button" data-close-modal="appointmentDetailModal" aria-label="Cerrar"><i data-lucide="x"></i></button>
+            </div>
+            <div id="appointmentDetailBody"></div>
+          </div>
+        </div>
+        <div class="modal-layer" id="settlementModal">
+          <form class="modal-card form-grid settlement-card" id="settlementForm">
+            <div class="modal-head">
+              <div><span>Cuenta del barbero</span><h3 id="settlementTitle">Registrar movimiento</h3></div>
+              <button class="icon-btn" type="button" data-close-modal="settlementModal" aria-label="Cerrar"><i data-lucide="x"></i></button>
+            </div>
+            <input type="hidden" id="settlementProfessionalId" />
+            <input type="hidden" id="settlementType" />
+            <div class="settlement-summary" id="settlementSummary"></div>
+            <label>Monto COP<input id="settlementAmount" type="number" min="0" step="1000" required /></label>
+            <label>Nota<input id="settlementNote" placeholder="Motivo del descuento o liquidacion" /></label>
+            <button class="pill-btn primary" type="submit"><i data-lucide="save"></i>Guardar movimiento</button>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
