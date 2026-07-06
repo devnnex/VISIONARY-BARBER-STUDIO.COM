@@ -68,7 +68,7 @@ img { max-width: 100%; display: block; }
 .app-shell { min-height: 100vh; }
 .main {
   min-height: 100vh;
-  padding: 16px;
+  padding: 14px;
   transition: transform 0.35s ease;
   min-width: 0;
 }
@@ -84,11 +84,12 @@ img { max-width: 100%; display: block; }
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: blur(18px);
   min-width: 0;
+  gap: 10px;
 }
 
 .top-brand { display: flex; gap: 10px; align-items: center; min-width: 0; }
 .top-brand span, .brand-row span, .section-head span, .admin-title span { display: block; color: var(--muted); font-size: 12px; }
-.top-brand strong, .brand-row strong { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 190px; }
+.top-brand strong, .brand-row strong { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: min(190px, 52vw); }
 
 .mini-logo, .brand-mark {
   width: 38px;
@@ -820,8 +821,16 @@ input, select {
 }
 .table-wrap {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border-radius: 18px;
   border: 1px solid var(--line);
+}
+.table-wrap::-webkit-scrollbar {
+  height: 8px;
+}
+.table-wrap::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--premium) 42%, var(--line));
 }
 table { width: 100%; border-collapse: collapse; min-width: 560px; background: var(--panel); }
 .dashboard-filters + .metrics + .panel table { min-width: 980px; }
@@ -837,7 +846,7 @@ td small {
   border-color: color-mix(in srgb, var(--premium) 24%, var(--line));
 }
 .accounting-tools {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   margin-top: 12px;
 }
 .net-value {
@@ -852,6 +861,7 @@ td small {
   border-radius: 12px;
   min-height: 36px;
   padding: 0 10px;
+  white-space: nowrap;
 }
 .danger { color: var(--danger); }
 .ok { color: var(--ok); }
@@ -1005,6 +1015,43 @@ td small {
   width: auto;
   min-width: 150px;
   min-height: 52px;
+}
+.status-select {
+  flex: 0 0 auto;
+  min-width: 156px;
+  min-height: 52px;
+  border: 1px solid color-mix(in srgb, var(--premium) 28%, var(--line));
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 82%, var(--premium)));
+  color: var(--accent-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  box-shadow: 0 16px 38px color-mix(in srgb, var(--premium) 18%, transparent);
+}
+.status-select i {
+  width: 17px;
+  height: 17px;
+  color: var(--premium);
+  flex: 0 0 auto;
+}
+.status-select select {
+  flex: 1;
+  min-width: 0;
+  min-height: auto;
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  font-weight: 700;
+  outline: 0;
+}
+.status-select select option {
+  color: #111;
 }
 
 .reservation-alert {
@@ -1316,6 +1363,95 @@ svg { width: 20px; height: 20px; stroke-width: 2.2; }
   .admin-login h3 { grid-column: 1 / -1; }
 }
 
+@media (max-width: 759px) {
+  body.admin-page .main {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  body.admin-page .panel,
+  body.admin-page .metric,
+  body.admin-page .appointment-card,
+  body.admin-page .data-row {
+    max-width: 100%;
+  }
+  body.admin-page .admin-screen.active {
+    gap: 12px;
+  }
+  body.admin-page .admin-tools {
+    grid-template-columns: 1fr;
+  }
+  body.admin-page .accounting-tools {
+    grid-template-columns: 1fr;
+  }
+  body.admin-page .appointment-list {
+    grid-template-columns: 1fr;
+  }
+  body.admin-page .form-grid {
+    grid-template-columns: 1fr;
+  }
+  body.admin-page .form-grid h3,
+  body.admin-page .form-grid button {
+    grid-column: auto;
+  }
+  body.admin-page .settlement-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body.admin-page .dashboard-filters + .metrics + .panel .table-wrap {
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+  }
+  body.admin-page .dashboard-filters + .metrics + .panel table,
+  body.admin-page .dashboard-filters + .metrics + .panel thead,
+  body.admin-page .dashboard-filters + .metrics + .panel tbody,
+  body.admin-page .dashboard-filters + .metrics + .panel tr,
+  body.admin-page .dashboard-filters + .metrics + .panel td {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+  body.admin-page .dashboard-filters + .metrics + .panel thead {
+    display: none;
+  }
+  body.admin-page .dashboard-filters + .metrics + .panel table {
+    background: transparent;
+  }
+  body.admin-page .accounting-row-card {
+    border: 1px solid color-mix(in srgb, var(--premium) 18%, var(--line));
+    border-radius: 22px;
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--panel) 94%, transparent), color-mix(in srgb, var(--panel-2) 90%, transparent));
+    box-shadow: 0 18px 45px rgba(0,0,0,.06);
+    margin-bottom: 12px;
+    padding: 14px;
+  }
+  body.admin-page .accounting-row-card td {
+    border: 0;
+    padding: 8px 0;
+  }
+  body.admin-page .accounting-row-card td:first-child {
+    padding-top: 0;
+  }
+  body.admin-page .accounting-row-card td[data-label] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-top: 1px solid var(--line);
+  }
+  body.admin-page .accounting-row-card td[data-label]::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  body.admin-page .accounting-row-card .row-actions {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 8px;
+  }
+}
+
 @media (min-width: 980px) {
   .appointment-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1350,11 +1486,84 @@ svg { width: 20px; height: 20px; stroke-width: 2.2; }
 }
 
 @media (max-width: 520px) {
+  .main {
+    padding: 12px;
+  }
+  body.admin-page .topbar {
+    padding-bottom: 12px;
+  }
+  body.admin-page .top-brand {
+    flex: 1;
+    min-width: 0;
+  }
+  body.admin-page .mini-logo {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+  }
+  body.admin-page .icon-btn {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+  }
+  body.admin-page .side-menu {
+    width: min(88vw, 320px);
+    padding: 18px;
+  }
+  body.admin-page .menu-link,
+  body.admin-page .admin-tab {
+    min-height: 52px;
+    border-radius: 16px;
+  }
   .section-head, .panel-head {
     align-items: flex-start;
     flex-direction: column;
   }
-  .metrics { grid-template-columns: 1fr; }
+  .metrics {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .metric {
+    border-radius: 20px;
+    padding: 16px;
+  }
+  .metric strong {
+    font-size: 26px;
+  }
+  .panel,
+  .admin-module-head,
+  .booking-panel {
+    border-radius: 22px;
+    padding: 16px;
+  }
+  .admin-tools {
+    gap: 9px;
+  }
+  .search-field,
+  .search-field input,
+  .tool-pill,
+  input,
+  select {
+    min-height: 52px;
+  }
+  .tool-pill {
+    width: 100%;
+  }
+  .table-wrap {
+    margin-inline: -2px;
+    border-radius: 16px;
+  }
+  th, td {
+    padding: 13px 12px;
+  }
+  .row-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  .row-actions .small-btn {
+    min-height: 42px;
+  }
   .data-row, .appointment-card {
     align-items: stretch;
     flex-direction: column;
@@ -1362,15 +1571,31 @@ svg { width: 20px; height: 20px; stroke-width: 2.2; }
   .appointment-date {
     width: 100%;
     min-height: auto;
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto auto auto;
     justify-items: start;
+    justify-content: start;
     gap: 8px;
+    border-radius: 18px;
   }
   .appointment-money {
     text-align: left;
   }
   .appointment-card select {
     width: 100%;
+  }
+  .status-select {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+  }
+  .appointment-card .status-select select {
+    width: auto;
+    flex: 0 1 auto;
+  }
+  .appointment-money {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   .detail-grid {
     grid-template-columns: 1fr;
@@ -1386,6 +1611,27 @@ svg { width: 20px; height: 20px; stroke-width: 2.2; }
   .reservation-alert .ghost-btn,
   .reservation-alert .icon-btn {
     width: 100%;
+  }
+  .modal-layer {
+    padding: 12px;
+    align-items: end;
+  }
+  .modal-card {
+    width: 100%;
+    max-height: 92vh;
+    overflow-y: auto;
+    border-radius: 24px 24px 18px 18px;
+  }
+  .modal-head {
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .form-grid {
+    gap: 10px;
+  }
+  .brand-file span,
+  .brand-file.wide-preview span {
+    min-height: 118px;
   }
   .booking-actions {
     display: grid;
