@@ -24,19 +24,21 @@
     <section class="profile-card" aria-labelledby="brand-title">
       <video class="background-video" src="images/feder.mp4" poster="images/favicon.jpg" autoplay loop playsinline preload="auto" aria-hidden="true"></video>
       <div class="bg-mark" aria-hidden="true"></div>
-      <button class="sound-toggle" type="button" aria-label="Activar musica de fondo" aria-pressed="false" title="Activar musica">
-        <svg class="sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.7l4.6 4.1c.6.5 1.5.1 1.5-.7V6.1c0-.8-.9-1.2-1.5-.7L7.7 9.5H4Zm14.4-2.3a1 1 0 0 0-1.4 1.4 4.8 4.8 0 0 1 0 6.8 1 1 0 1 0 1.4 1.4 6.8 6.8 0 0 0 0-9.6Zm-2.6 2.5a1 1 0 0 0-1.4 1.4 1.3 1.3 0 0 1 0 1.8 1 1 0 1 0 1.4 1.4 3.3 3.3 0 0 0 0-4.6Z"/></svg>
-        <svg class="sound-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.7l4.6 4.1c.6.5 1.5.1 1.5-.7V6.1c0-.8-.9-1.2-1.5-.7L7.7 9.5H4Zm12.7-.2a1 1 0 0 0-1.4 1.4l1.3 1.3-1.3 1.3a1 1 0 0 0 1.4 1.4l1.3-1.3 1.3 1.3a1 1 0 0 0 1.4-1.4L19.4 12l1.3-1.3a1 1 0 0 0-1.4-1.4L18 10.6l-1.3-1.3Z"/></svg>
-      </button>
 
       <header class="brand-header">
         <a class="logo-link" href="https://www.instagram.com/visionarybs.co/" target="_blank" rel="noopener" aria-label="Abrir Instagram de Visionary Barber Studio">
           <img src="images/loogo.png" alt="Visionary Barber Studio" class="brand-logo">
         </a>
-        <span class="status-pill">
-          <span class="live-dot" aria-hidden="true"></span>
-          Previa cita
-        </span>
+        <div class="brand-actions">
+          <span class="status-pill">
+            <span class="live-dot" aria-hidden="true"></span>
+            Previa cita
+          </span>
+          <button class="sound-toggle" type="button" aria-label="Activar musica de fondo" aria-pressed="false" title="Activar musica">
+            <svg class="sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.7l4.6 4.1c.6.5 1.5.1 1.5-.7V6.1c0-.8-.9-1.2-1.5-.7L7.7 9.5H4Zm14.4-2.3a1 1 0 0 0-1.4 1.4 4.8 4.8 0 0 1 0 6.8 1 1 0 1 0 1.4 1.4 6.8 6.8 0 0 0 0-9.6Zm-2.6 2.5a1 1 0 0 0-1.4 1.4 1.3 1.3 0 0 1 0 1.8 1 1 0 1 0 1.4 1.4 3.3 3.3 0 0 0 0-4.6Z"/></svg>
+            <svg class="sound-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.7l4.6 4.1c.6.5 1.5.1 1.5-.7V6.1c0-.8-.9-1.2-1.5-.7L7.7 9.5H4Zm12.7-.2a1 1 0 0 0-1.4 1.4l1.3 1.3-1.3 1.3a1 1 0 0 0 1.4 1.4l1.3-1.3 1.3 1.3a1 1 0 0 0 1.4-1.4L19.4 12l1.3-1.3a1 1 0 0 0-1.4-1.4L18 10.6l-1.3-1.3Z"/></svg>
+          </button>
+        </div>
       </header>
 
       <div class="hero-panel">
@@ -61,7 +63,7 @@
       </div>
 
       <nav class="action-grid" aria-label="Redes y contacto">
-        <a class="action-card primary" data-network="whatsapp" href="https://wa.me/573219553568?text=Hola%20equipo%20Visionary%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%2C%20por%20favor." target="_blank" rel="noopener">
+        <a class="action-card primary" data-network="whatsapp" href="https://api.whatsapp.com/send?phone=573219553568&text=Hola%20equipo%20Visionary%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%2C%20por%20favor.">
           <span class="action-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" role="img"><path d="M19.1 4.9A9.8 9.8 0 0 0 3.7 16.7L3 21l4.4-.7a9.7 9.7 0 0 0 4.7 1.2h.1a9.8 9.8 0 0 0 6.9-16.6ZM12.2 19.8h-.1a8 8 0 0 1-4.1-1.1l-.3-.2-2.6.7.7-2.5-.2-.3a8.1 8.1 0 1 1 6.6 3.4Zm4.5-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8.9-.1.2-.3.2-.6.1-.2-.1-1-.4-2-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.7-1.7c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3s1 2.6 1.1 2.8c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.4-.6 1.6-1.1.2-.5.2-1 .2-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>
           </span>
@@ -71,7 +73,7 @@
           </span>
         </a>
 
-        <a class="action-card" data-network="instagram" href="https://www.instagram.com/visionarybs.co/" target="_blank" rel="noopener">
+        <a class="action-card" data-network="instagram" href="https://www.instagram.com/visionarybs.co/">
           <span class="action-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" role="img"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm9.7 1.7a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
           </span>
@@ -81,7 +83,7 @@
           </span>
         </a>
 
-        <a class="action-card" data-network="facebook" href="https://www.facebook.com/visionarybs.co/?ref=PROFILE_EDIT_xav_ig_profile_page_web#" target="_blank" rel="noopener">
+        <a class="action-card" data-network="facebook" href="https://www.facebook.com/visionarybs.co/?ref=PROFILE_EDIT_xav_ig_profile_page_web#">
           <span class="action-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" role="img"><path d="M14 8.4V6.7c0-.8.5-1 1.1-1H17V2.2c-.9-.1-1.8-.2-2.7-.2-2.7 0-4.5 1.7-4.5 4.6v1.8H7v3.9h2.8V22H14v-9.7h2.8l.5-3.9H14Z"/></svg>
           </span>
@@ -91,7 +93,7 @@
           </span>
         </a>
 
-        <a class="action-card" data-network="tiktok" href="https://www.tiktok.com/@visionary_lvv?_r=1&_t=ZS-9873fvz8mjn" target="_blank" rel="noopener">
+        <a class="action-card" data-network="tiktok" href="https://www.tiktok.com/@visionary_lvv?_r=1&_t=ZS-9873fvz8mjn">
           <span class="action-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" role="img"><path d="M16.7 2c.4 2.8 2 4.5 4.8 4.7v3.2a8.3 8.3 0 0 1-4.8-1.5v6.7c0 3.4-2.2 6.9-6.9 6.9A6.8 6.8 0 0 1 3 15.2c0-4.2 3.7-7.5 7.9-6.6v3.4c-2.2-.7-4.6.9-4.6 3.2a3.4 3.4 0 0 0 3.4 3.4c2.1 0 3.5-1.5 3.5-3.8V2h3.5Z"/></svg>
           </span>
@@ -110,7 +112,7 @@
         </div>
         <div class="map-frame">
           <iframe title="Mapa de Visionary Barber Studio" src="https://www.google.com/maps/embed?pb=!4v1784305552231!6m8!1m7!1sNJT28cCioNLrMkbsL9ixbw!2m2!1d7.060646504516316!2d-73.85305777729019!3f321.9462546147049!4f2.199294689585784!5f1.5370213448934535" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-          <a class="map-link" href="https://www.google.com/maps?q=7.060646504516316,-73.85305777729019" target="_blank" rel="noopener" aria-label="Abrir ruta a Visionary Barber Studio en Google Maps">
+          <a class="map-link" href="https://www.google.com/maps?q=7.060646504516316,-73.85305777729019" aria-label="Abrir ruta a Visionary Barber Studio en Google Maps">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7.2 7.2 0 0 0-7.2 7.2c0 5.2 6.1 12.1 6.4 12.4a1.1 1.1 0 0 0 1.6 0c.3-.3 6.4-7.2 6.4-12.4A7.2 7.2 0 0 0 12 2Zm0 9.8a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z"/></svg>
             Ver ruta
           </a>
