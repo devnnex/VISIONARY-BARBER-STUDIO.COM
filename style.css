@@ -137,7 +137,7 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 8px;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.68)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.48)),
     url("images/favicon.jpg") center / cover no-repeat;
   box-shadow: 0 26px 80px var(--shadow);
   isolation: isolate;
@@ -146,24 +146,45 @@ a {
 .profile-card::before {
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   content: "";
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.42) 45%, rgba(0, 0, 0, 0.74) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.68) 0%, rgba(0, 0, 0, 0.24) 45%, rgba(0, 0, 0, 0.58) 100%),
     radial-gradient(circle at 80% 18%, rgba(255, 255, 255, 0.13), transparent 29%);
   backdrop-filter: saturate(1.05);
+}
+
+.profile-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.22)),
+    url("images/favicon.jpg") center 46% / 132% auto no-repeat;
+  opacity: 0.36;
+  mix-blend-mode: screen;
 }
 
 .bg-mark {
   position: absolute;
   inset: auto -20% 31% auto;
-  z-index: -1;
+  z-index: 0;
   width: 62%;
   aspect-ratio: 1;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
   filter: blur(42px);
   opacity: 0.78;
+}
+
+.brand-header,
+.hero-panel,
+.action-grid,
+.location-panel {
+  position: relative;
+  z-index: 1;
 }
 
 .brand-header {
