@@ -488,17 +488,27 @@ h1 {
 
 .action-card {
   position: relative;
+  --network-a: rgba(255, 255, 255, 0.18);
+  --network-b: rgba(255, 255, 255, 0.08);
+  --network-c: rgba(255, 255, 255, 0.02);
+  --network-glow: rgba(255, 255, 255, 0.18);
+  --network-border: rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   min-width: 0;
   min-height: 58px;
   gap: 10px;
   padding: 10px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--network-border);
   border-radius: 8px;
-  background: rgba(7, 7, 8, 0.58);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  background:
+    radial-gradient(circle at 16% 18%, var(--network-a), transparent 34%),
+    linear-gradient(135deg, var(--network-b), rgba(8, 8, 9, 0.82) 52%, var(--network-c)),
+    rgba(7, 7, 8, 0.66);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 14px 30px rgba(0, 0, 0, 0.26);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
 
 .action-card::after {
@@ -507,16 +517,32 @@ h1 {
   border-radius: inherit;
   content: "";
   opacity: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 55%);
+  background:
+    linear-gradient(115deg, transparent 0 22%, rgba(255, 255, 255, 0.24) 39%, transparent 56%),
+    radial-gradient(circle at 88% 15%, var(--network-glow), transparent 36%);
   transition: opacity 180ms ease;
+}
+
+.action-card::before {
+  position: absolute;
+  inset: 1px;
+  border-radius: 7px;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 42%);
+  opacity: 0.62;
 }
 
 .action-card:hover,
 .action-card:focus-visible,
 .action-card.is-active {
-  border-color: rgba(255, 255, 255, 0.34);
-  background: rgba(18, 18, 19, 0.94);
-  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.48);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 16px 36px rgba(0, 0, 0, 0.34),
+    0 0 34px var(--network-glow);
+  transform: translateY(-2px) scale(1.01);
 }
 
 .action-card:hover::after,
@@ -528,10 +554,6 @@ h1 {
 .action-card.primary {
   grid-column: 1 / -1;
   min-height: 64px;
-  border-color: rgba(255, 255, 255, 0.36);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08) 42%, rgba(0, 0, 0, 0.74)),
-    #080809;
   color: #fff;
 }
 
@@ -546,11 +568,18 @@ h1 {
   height: 38px;
   border-radius: 8px;
   place-items: center;
-  background: rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04)),
+    var(--network-a);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 8px 18px rgba(0, 0, 0, 0.2);
 }
 
 .action-card.primary .action-icon {
-  background: rgba(0, 0, 0, 0.18);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(0, 0, 0, 0.08)),
+    rgba(10, 95, 57, 0.72);
 }
 
 .action-icon svg {
@@ -579,6 +608,50 @@ h1 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.action-card[data-network="whatsapp"] {
+  --network-a: rgba(37, 211, 102, 0.68);
+  --network-b: rgba(18, 140, 84, 0.34);
+  --network-c: rgba(5, 28, 18, 0.78);
+  --network-glow: rgba(37, 211, 102, 0.28);
+  --network-border: rgba(37, 211, 102, 0.42);
+}
+
+.action-card[data-network="instagram"] {
+  --network-a: rgba(253, 29, 29, 0.6);
+  --network-b: rgba(193, 53, 132, 0.42);
+  --network-c: rgba(245, 133, 41, 0.2);
+  --network-glow: rgba(225, 48, 108, 0.3);
+  --network-border: rgba(225, 48, 108, 0.42);
+}
+
+.action-card[data-network="instagram"] .action-icon {
+  background:
+    linear-gradient(135deg, #405de6, #c13584 45%, #fd1d1d 70%, #fcb045),
+    rgba(255, 255, 255, 0.12);
+}
+
+.action-card[data-network="facebook"] {
+  --network-a: rgba(24, 119, 242, 0.64);
+  --network-b: rgba(8, 80, 172, 0.34);
+  --network-c: rgba(3, 20, 45, 0.78);
+  --network-glow: rgba(24, 119, 242, 0.28);
+  --network-border: rgba(24, 119, 242, 0.42);
+}
+
+.action-card[data-network="tiktok"] {
+  --network-a: rgba(0, 242, 234, 0.54);
+  --network-b: rgba(255, 0, 80, 0.32);
+  --network-c: rgba(3, 3, 5, 0.82);
+  --network-glow: rgba(0, 242, 234, 0.24);
+  --network-border: rgba(0, 242, 234, 0.4);
+}
+
+.action-card[data-network="tiktok"] .action-icon {
+  background:
+    linear-gradient(135deg, rgba(0, 242, 234, 0.64), rgba(10, 10, 14, 0.72) 46%, rgba(255, 0, 80, 0.66)),
+    rgba(255, 255, 255, 0.1);
 }
 
 .location-panel {
