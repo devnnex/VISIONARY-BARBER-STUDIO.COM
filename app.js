@@ -66,12 +66,16 @@ soundToggle?.addEventListener("click", async () => {
   }
 });
 
-document.addEventListener(
-  "pointerdown",
-  () => {
-    if (backgroundVideo?.paused || backgroundVideo?.muted) {
-      playBackgroundVideo({ withSound: true });
-    }
-  },
-  { once: true }
-);
+const unlockBackgroundAudio = () => {
+  if (backgroundVideo?.paused || backgroundVideo?.muted) {
+    playBackgroundVideo({ withSound: true });
+  }
+};
+
+["pointerdown", "touchstart", "click", "keydown"].forEach((eventName) => {
+  document.addEventListener(eventName, unlockBackgroundAudio, {
+    once: true,
+    capture: true,
+    passive: true,
+  });
+});
