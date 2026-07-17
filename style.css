@@ -136,41 +136,53 @@ a {
   padding: clamp(14px, 4vw, 22px);
   border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.48)),
-    url("images/favicon.jpg") center / cover no-repeat;
+  background: #020202;
   box-shadow: 0 26px 80px var(--shadow);
   isolation: isolate;
+}
+
+.background-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.58;
+  filter: grayscale(0.82) contrast(1.08) brightness(0.78) saturate(0.9);
+  transform: scale(1.04);
+  pointer-events: none;
 }
 
 .profile-card::before {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   content: "";
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.68) 0%, rgba(0, 0, 0, 0.24) 45%, rgba(0, 0, 0, 0.58) 100%),
-    radial-gradient(circle at 80% 18%, rgba(255, 255, 255, 0.13), transparent 29%);
+    linear-gradient(180deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.58)),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.22) 45%, rgba(0, 0, 0, 0.5) 100%),
+    radial-gradient(circle at 80% 18%, rgba(255, 255, 255, 0.12), transparent 29%);
   backdrop-filter: saturate(1.05);
 }
 
 .profile-card::after {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 2;
   content: "";
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.22)),
-    url("images/favicon.jpg") center 46% / 132% auto no-repeat;
-  opacity: 0.36;
-  mix-blend-mode: screen;
+    radial-gradient(circle at 50% 28%, transparent 0 20%, rgba(0, 0, 0, 0.22) 54%, rgba(0, 0, 0, 0.58) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 26%, rgba(0, 0, 0, 0.24));
+  opacity: 1;
 }
 
 .bg-mark {
   position: absolute;
   inset: auto -20% 31% auto;
-  z-index: 0;
+  z-index: 2;
   width: 62%;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -182,9 +194,63 @@ a {
 .brand-header,
 .hero-panel,
 .action-grid,
-.location-panel {
+.location-panel,
+.sound-toggle {
   position: relative;
-  z-index: 1;
+  z-index: 3;
+}
+
+.sound-toggle {
+  position: absolute;
+  top: clamp(62px, 10dvh, 82px);
+  right: clamp(14px, 4vw, 22px);
+  display: grid;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.58);
+  color: var(--white);
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  transition: border-color 180ms ease, background 180ms ease, opacity 180ms ease, transform 180ms ease;
+}
+
+.sound-toggle:hover,
+.sound-toggle:focus-visible {
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(18, 18, 19, 0.86);
+  transform: translateY(-1px);
+}
+
+.sound-toggle svg {
+  grid-area: 1 / 1;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.sound-toggle .sound-on {
+  display: none;
+}
+
+.sound-toggle.is-on .sound-on {
+  display: block;
+}
+
+.sound-toggle.is-on .sound-off {
+  display: none;
+}
+
+.sound-toggle.needs-gesture {
+  border-color: rgba(255, 255, 255, 0.34);
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.35),
+    0 0 0 5px rgba(255, 255, 255, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .brand-header {
@@ -243,9 +309,9 @@ a {
   padding: clamp(14px, 4vw, 20px);
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: linear-gradient(180deg, rgba(13, 13, 14, 0.62), rgba(5, 5, 5, 0.84));
+  background: linear-gradient(180deg, rgba(13, 13, 14, 0.5), rgba(5, 5, 5, 0.72));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 18px 45px rgba(0, 0, 0, 0.34);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(12px);
   transform: translateY(clamp(8px, 1.2dvh, 10px));
 }
 
@@ -424,7 +490,7 @@ h1 {
   padding: 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(7, 7, 8, 0.7);
+  background: rgba(7, 7, 8, 0.58);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
@@ -458,7 +524,7 @@ h1 {
   min-height: 64px;
   border-color: rgba(255, 255, 255, 0.36);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06) 42%, rgba(0, 0, 0, 0.86)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08) 42%, rgba(0, 0, 0, 0.74)),
     #080809;
   color: #fff;
 }
@@ -526,7 +592,7 @@ h1 {
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--panel-strong);
+  background: rgba(8, 8, 9, 0.72);
 }
 
 .location-copy strong {
@@ -594,6 +660,18 @@ h1 {
     min-height: 0;
     gap: 7px;
     padding: 10px;
+  }
+
+  .background-video {
+    opacity: 0.62;
+    transform: scale(1.08);
+  }
+
+  .sound-toggle {
+    top: 58px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
   }
 
   .brand-header {
@@ -674,6 +752,12 @@ h1 {
     min-height: 34px;
   }
 
+  .sound-toggle {
+    top: 48px;
+    width: 28px;
+    height: 28px;
+  }
+
   .logo-link {
     min-width: 132px;
     min-height: 32px;
@@ -743,6 +827,15 @@ h1 {
     gap: 16px;
     padding: 22px;
     background-position: center;
+  }
+
+  .background-video {
+    opacity: 0.52;
+  }
+
+  .sound-toggle {
+    top: 88px;
+    right: 22px;
   }
 
   .brand-header,
