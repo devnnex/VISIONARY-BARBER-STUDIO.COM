@@ -1,414 +1,118 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BarberBook Pro</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="app-shell">
-      <aside class="side-menu" id="sideMenu" aria-label="Menu principal">
-        <div class="brand-row">
-          <div class="brand-mark" id="menuLogo">BB</div>
-          <div>
-            <strong id="menuShopName">BarberBook Pro</strong>
-            <span>Reservas premium</span>
-          </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Visionary Barber Studio en Barrancabermeja. Barbería especializada con atención por cita previa.">
+  <title>Visionary Barber Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="images/loogo.png" as="image">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/favicon.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="splash-screen" aria-hidden="true">
+    <div class="splash-aura"></div>
+    <img src="images/loogo.png" alt="" class="splash-logo">
+    <span class="splash-line"></span>
+  </div>
+
+  <main class="app-shell" aria-label="Landing page de Visionary Barber Studio">
+    <section class="profile-card" aria-labelledby="brand-title">
+      <div class="bg-mark" aria-hidden="true"></div>
+
+      <header class="brand-header">
+        <a class="logo-link" href="https://www.instagram.com/visionarybs.co/" target="_blank" rel="noopener" aria-label="Abrir Instagram de Visionary Barber Studio">
+          <img src="images/loogo.png" alt="Visionary Barber Studio" class="brand-logo">
+        </a>
+        <span class="status-pill">
+          <span class="live-dot" aria-hidden="true"></span>
+          Previa cita
+        </span>
+      </header>
+
+      <div class="hero-panel">
+        <p class="eyebrow">Barbería especializada</p>
+        <h1 id="brand-title">Imagen impecable sin perder el tiempo.</h1>
+        <p class="hero-copy">Atención personalizada para cortes, barba y estilo con agenda organizada en Barrancabermeja.</p>
+
+        <div class="quick-info" aria-label="Información principal">
+          <article>
+            <span>Servicio</span>
+            <strong>Premium</strong>
+          </article>
+          <article>
+            <span>Agenda</span>
+            <strong>Con cita</strong>
+          </article>
+          <article>
+            <span>Zona</span>
+            <strong>Calle 50</strong>
+          </article>
         </div>
-        <nav class="nav-panel active" id="mainNav">
-          <button class="menu-link active" data-view="home"><i data-lucide="home"></i><span>Inicio</span></button>
-          <button class="menu-link" data-view="booking"><i data-lucide="calendar-check"></i><span>Reservar</span></button>
-          <button class="menu-link" data-view="plans"><i data-lucide="gem"></i><span>Planes</span></button>
-          <button class="menu-link" data-view="admin"><i data-lucide="layout-dashboard"></i><span>Administracion</span></button>
-        </nav>
-        <nav class="nav-panel admin-nav" id="adminNav">
-          <button class="menu-link back-link" id="backFromAdmin" type="button"><i data-lucide="arrow-left"></i><span>Regresar</span></button>
-          <button class="admin-tab active" data-admin="dashboard"><i data-lucide="activity"></i><span>Resumen</span></button>
-          <button class="admin-tab" data-admin="appointments"><i data-lucide="calendar-days"></i><span>Citas</span></button>
-          <button class="admin-tab" data-admin="professionals"><i data-lucide="users"></i><span>Profesionales</span></button>
-          <button class="admin-tab" data-admin="services"><i data-lucide="scissors"></i><span>Servicios</span></button>
-          <button class="admin-tab" data-admin="branding"><i data-lucide="paintbrush"></i><span>Personalizacion</span></button>
-        </nav>
-        <div class="theme-box">
-          <span>Modo noche</span>
-          <label class="switch">
-            <input id="themeToggle" type="checkbox" />
-            <b></b>
-          </label>
+      </div>
+
+      <nav class="action-grid" aria-label="Redes y contacto">
+        <a class="action-card primary" data-network="whatsapp" href="https://wa.me/573219553568?text=Hola%20equipo%20Visionary%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%2C%20por%20favor." target="_blank" rel="noopener">
+          <span class="action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img"><path d="M19.1 4.9A9.8 9.8 0 0 0 3.7 16.7L3 21l4.4-.7a9.7 9.7 0 0 0 4.7 1.2h.1a9.8 9.8 0 0 0 6.9-16.6ZM12.2 19.8h-.1a8 8 0 0 1-4.1-1.1l-.3-.2-2.6.7.7-2.5-.2-.3a8.1 8.1 0 1 1 6.6 3.4Zm4.5-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8.9-.1.2-.3.2-.6.1-.2-.1-1-.4-2-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.7-1.7c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3s1 2.6 1.1 2.8c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.4-.6 1.6-1.1.2-.5.2-1 .2-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>
+          </span>
+          <span>
+            <strong>Agendar cita</strong>
+            <small>WhatsApp directo</small>
+          </span>
+        </a>
+
+        <a class="action-card" data-network="instagram" href="https://www.instagram.com/visionarybs.co/" target="_blank" rel="noopener">
+          <span class="action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm9.7 1.7a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+          </span>
+          <span>
+            <strong>Instagram</strong>
+            <small>@visionarybs.co</small>
+          </span>
+        </a>
+
+        <a class="action-card" data-network="facebook" href="https://www.facebook.com/visionarybs.co/?ref=PROFILE_EDIT_xav_ig_profile_page_web#" target="_blank" rel="noopener">
+          <span class="action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img"><path d="M14 8.4V6.7c0-.8.5-1 1.1-1H17V2.2c-.9-.1-1.8-.2-2.7-.2-2.7 0-4.5 1.7-4.5 4.6v1.8H7v3.9h2.8V22H14v-9.7h2.8l.5-3.9H14Z"/></svg>
+          </span>
+          <span>
+            <strong>Facebook</strong>
+            <small>Visionary BS</small>
+          </span>
+        </a>
+
+        <a class="action-card" data-network="tiktok" href="https://www.tiktok.com/@visionary_lvv?_r=1&_t=ZS-9873fvz8mjn" target="_blank" rel="noopener">
+          <span class="action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img"><path d="M16.7 2c.4 2.8 2 4.5 4.8 4.7v3.2a8.3 8.3 0 0 1-4.8-1.5v6.7c0 3.4-2.2 6.9-6.9 6.9A6.8 6.8 0 0 1 3 15.2c0-4.2 3.7-7.5 7.9-6.6v3.4c-2.2-.7-4.6.9-4.6 3.2a3.4 3.4 0 0 0 3.4 3.4c2.1 0 3.5-1.5 3.5-3.8V2h3.5Z"/></svg>
+          </span>
+          <span>
+            <strong>TikTok</strong>
+            <small>@visionary_lvv</small>
+          </span>
+        </a>
+      </nav>
+
+      <section class="location-panel" aria-label="Ubicación">
+        <div class="location-copy">
+          <span>Ubicación</span>
+          <strong>Calle 50 26-15, Parque a la Vida</strong>
+          <small>Barrancabermeja</small>
         </div>
-      </aside>
-
-      <div class="overlay" id="overlay"></div>
-
-      <main class="main">
-        <header class="topbar">
-          <button class="icon-btn" id="openMenu" aria-label="Abrir menu"><i data-lucide="menu"></i></button>
-          <div class="top-brand">
-            <div class="mini-logo" id="topLogo">BB</div>
-            <div>
-              <span>Bienvenido a</span>
-              <strong id="topShopName">BarberBook Pro</strong>
-            </div>
-          </div>
-          <button class="icon-btn" id="goAdmin" aria-label="Administracion"><i data-lucide="bell"></i><em id="notifDot"></em></button>
-        </header>
-
-        <section class="view active" id="homeView">
-          <div class="hero">
-            <img id="heroImage" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1100&q=80" alt="Barberia" />
-            <div class="hero-content">
-              <p id="heroKicker">Estilo, precision y agenda inteligente</p>
-              <h1 id="heroTitle">Reserva tu corte sin esperar.</h1>
-              <button class="pill-btn primary" data-view="booking"><i data-lucide="scissors"></i>Reservar ahora</button>
-            </div>
-          </div>
-
-          <div class="quick-grid">
-            <article>
-              <i data-lucide="clock-3"></i>
-              <strong>Disponibilidad real</strong>
-              <span>Los horarios reservados se bloquean al instante.</span>
-            </article>
-            <article>
-              <i data-lucide="user-round-check"></i>
-              <strong>Barberos expertos</strong>
-              <span>El cliente elige profesional, fecha, hora y servicio.</span>
-            </article>
-            <article>
-              <i data-lucide="chart-no-axes-combined"></i>
-              <strong>Admin inteligente</strong>
-              <span>Control de citas, servicios atendidos y contabilidad.</span>
-            </article>
-          </div>
-
-        </section>
-
-        <section class="view" id="bookingView">
-          <div class="section-head">
-            <div>
-              <span>Reserva mobile-first</span>
-              <h2>Agenda tu cita</h2>
-            </div>
-            <button class="ghost-btn" id="resetBooking"><i data-lucide="rotate-ccw"></i>Reiniciar</button>
-          </div>
-
-          <div class="stepper" id="stepper">
-            <span class="done">1</span><span>2</span><span>3</span><span>4</span>
-          </div>
-
-          <div class="booking-panel">
-            <div class="booking-step active" data-step="1">
-              <h3>Elige tu barbero</h3>
-              <div class="barber-list" id="barberList"></div>
-            </div>
-
-            <div class="booking-step" data-step="2">
-              <h3>Elige fecha y hora disponible</h3>
-              <div class="date-strip" id="dateStrip"></div>
-              <div class="time-grid" id="timeGrid"></div>
-            </div>
-
-            <div class="booking-step" data-step="3">
-              <h3>Selecciona el servicio</h3>
-              <div class="service-list" id="serviceList"></div>
-            </div>
-
-            <div class="booking-step" data-step="4">
-              <h3>Confirma tus datos</h3>
-              <form class="client-form" id="bookingForm">
-                <label>Nombre completo<input id="customerName" required autocomplete="name" /></label>
-                <label>Numero de celular<input id="customerPhone" required autocomplete="tel" inputmode="tel" /></label>
-                <button class="pill-btn primary wide" type="submit"><i data-lucide="calendar-check"></i>Confirmar reserva</button>
-              </form>
-              <div class="summary-card" id="bookingSummary"></div>
-            </div>
-          </div>
-          <div class="booking-actions">
-            <button class="ghost-btn" id="prevStep" type="button"><i data-lucide="arrow-left"></i>Atras</button>
-            <button class="pill-btn primary" id="nextStep" type="button">Continuar<i data-lucide="arrow-right"></i></button>
-          </div>
-        </section>
-
-        <section class="view" id="plansView">
-          <section class="plans-section premium-plans">
-            <div class="section-head">
-              <div>
-                <span>Planes para barberias</span>
-                <h2>Elige como quieres crecer</h2>
-              </div>
-            </div>
-            <div class="plans-grid">
-              <article class="plan-card platinum">
-                <div class="plan-badge">Platino mensual</div>
-                <div class="plan-top">
-                  <span>Mensual</span>
-                  <strong>$120.000 COP</strong>
-                  <small>por mes</small>
-                </div>
-                <p>Ideal para empezar rapido, validar el sistema y mantener soporte continuo sin una inversion alta inicial.</p>
-                <ul>
-                  <li>Reservas online con bloqueo automatico.</li>
-                  <li>Panel administrativo responsive.</li>
-                  <li>Personalizacion de nombre, logo e imagenes.</li>
-                  <li>Actualizaciones y mejoras incluidas.</li>
-                </ul>
-                <button class="pill-btn primary wide"><i data-lucide="credit-card"></i>Elegir mensual</button>
-              </article>
-              <article class="plan-card gold featured">
-                <div class="plan-badge">Oro premium</div>
-                <div class="plan-top">
-                  <span>Pago unico</span>
-                  <strong>$2.800.000 COP</strong>
-                  <small>licencia premium con entrega completa</small>
-                </div>
-                <p>Para barberias que quieren quedarse con su propio sistema, operar sin mensualidades y proyectar una marca mas seria, exclusiva y preparada para crecer.</p>
-                <ul>
-                  <li>El sistema queda entregado para la barberia.</li>
-                  <li>Implementacion personalizada con nombre, logo, colores e imagenes.</li>
-                  <li>Base Supabase configurada, optimizada y lista para operar.</li>
-                  <li>Panel administrativo responsive para PC, tablet y celular.</li>
-                  <li>Soporte inicial incluido para puesta en marcha.</li>
-                  <li>Capacitacion basica para administrar citas, barberos y servicios.</li>
-                  <li>Experiencia premium con modo claro, modo noche y notificaciones.</li>
-                  <li>Entrega completa para trabajar con una presencia digital propia.</li>
-                </ul>
-                <button class="pill-btn primary wide"><i data-lucide="gem"></i>Elegir pago unico</button>
-              </article>
-            </div>
-          </section>
-        </section>
-
-        <section class="view" id="adminView">
-          <div class="admin-layout">
-            <div class="admin-content">
-              <form class="panel admin-login" id="adminLoginForm">
-                <h3>Acceso administrador</h3>
-                <label>Email<input id="adminEmail" type="email" autocomplete="email" /></label>
-                <label>Contrasena
-                  <span class="password-field">
-                    <input id="adminPassword" type="password" autocomplete="current-password" />
-                    <button class="password-toggle" id="toggleAdminPassword" type="button" aria-label="Ver contrasena"><i data-lucide="eye"></i></button>
-                  </span>
-                </label>
-                <button class="pill-btn primary" type="submit"><i data-lucide="log-in"></i>Entrar</button>
-                <button class="ghost-btn" id="adminLogout" type="button"><i data-lucide="log-out"></i>Salir</button>
-                <p class="auth-hint" id="adminAuthHint"></p>
-              </form>
-              <div class="admin-lock panel" id="adminLock">
-                <i data-lucide="lock-keyhole"></i>
-                <strong>Crea el jefe o inicia sesion</strong>
-                <span>Si esta barberia aun no tiene jefe, este formulario crea el primero. Si ya existe, solo permite iniciar sesion.</span>
-              </div>
-
-              <div class="admin-secure" id="adminSecure">
-              <div class="admin-screen active" id="dashboardAdmin">
-                <div class="panel dashboard-filters">
-                  <div class="panel-head">
-                    <div>
-                      <span>Rango contable</span>
-                      <h3>Resumen financiero</h3>
-                    </div>
-                  </div>
-                  <div class="admin-tools accounting-tools">
-                    <select id="accountingRange">
-                      <option value="today">Hoy</option>
-                      <option value="yesterday">Ayer</option>
-                      <option value="7">Ultimos 7 dias</option>
-                      <option value="15">Ultimos 15 dias</option>
-                      <option value="month">Este mes</option>
-                      <option value="year">Este ano</option>
-                      <option value="custom">Dia especifico</option>
-                    </select>
-                    <input id="accountingDate" type="date" />
-                    <select id="accountingFilter"></select>
-                  </div>
-                </div>
-                <div class="metrics" id="metrics"></div>
-                <div class="panel">
-                  <div class="panel-head">
-                    <h3>Contabilidad por barbero</h3>
-                  </div>
-                  <div class="table-wrap">
-                    <table>
-                      <thead><tr><th>Barbero</th><th>Atendidas</th><th>Ingresos</th><th>Descuentos</th><th>Liquidado</th><th>Neto</th><th>Acciones</th></tr></thead>
-                      <tbody id="accountingRows"></tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-
-              <div class="admin-screen" id="appointmentsAdmin">
-                <div class="panel">
-                  <div class="panel-head">
-                    <h3>Citas agendadas</h3>
-                    <button class="ghost-btn" id="seedNotification"><i data-lucide="sparkles"></i>Simular notificacion</button>
-                  </div>
-                  <div class="admin-tools">
-                    <label class="search-field"><i data-lucide="search"></i><input id="appointmentSearch" placeholder="Buscar cliente, celular o servicio" /></label>
-                    <select id="appointmentProfessionalFilter"></select>
-                    <select id="appointmentStatusFilter"></select>
-                    <span class="tool-pill" id="appointmentCount"><i data-lucide="star"></i>0 citas</span>
-                  </div>
-                  <div class="appointment-list" id="appointmentList"></div>
-                </div>
-              </div>
-
-              <div class="admin-screen" id="professionalsAdmin">
-                <div class="panel-head admin-module-head">
-                  <div>
-                    <span>Equipo y disponibilidad</span>
-                    <h3>Profesionales</h3>
-                  </div>
-                  <button class="pill-btn primary" id="openProfessionalModal" type="button"><i data-lucide="user-plus"></i>Agregar profesional</button>
-                </div>
-                <div class="admin-tools">
-                  <label class="search-field"><i data-lucide="search"></i><input id="professionalSearch" placeholder="Buscar profesional o especialidad" /></label>
-                  <span class="tool-pill" id="professionalCount">0 activos</span>
-                </div>
-                <div class="data-list" id="professionalRows"></div>
-              </div>
-
-              <div class="admin-screen" id="servicesAdmin">
-                <div class="panel-head admin-module-head">
-                  <div>
-                    <span>Catalogo premium</span>
-                    <h3>Servicios</h3>
-                  </div>
-                  <button class="pill-btn primary" id="openServiceModal" type="button"><i data-lucide="plus"></i>Agregar servicio</button>
-                </div>
-                <div class="admin-tools">
-                  <label class="search-field"><i data-lucide="search"></i><input id="serviceSearch" placeholder="Buscar servicio o precio" /></label>
-                  <span class="tool-pill" id="serviceCount">0 servicios</span>
-                </div>
-                <div class="data-list" id="serviceRows"></div>
-              </div>
-
-              <div class="admin-screen" id="brandingAdmin">
-                <form class="panel form-grid" id="brandingForm">
-                  <h3>Personalizar barberia alquilada</h3>
-                  <label>Nombre de barberia<input id="brandName" required /></label>
-                  <label>Texto principal<input id="brandHeroTitle" required /></label>
-                  <label class="file-drop brand-file"><input id="brandLogoFile" type="file" accept="image/*" /><span><img id="brandLogoPreview" alt="Preview logo" /><i data-lucide="badge-info"></i><b>Subir logo</b><small>PNG, JPG o WebP</small></span></label>
-                  <label class="file-drop brand-file wide-preview"><input id="brandHeroFile" type="file" accept="image/*" /><span><img id="brandHeroPreview" alt="Preview portada" /><i data-lucide="image-plus"></i><b>Subir portada</b><small>Imagen principal de la barberia</small></span></label>
-                  <label class="file-drop brand-file wide-preview"><input id="brandPromoFile" type="file" accept="image/*" /><span><img id="brandPromoPreview" alt="Preview promo" /><i data-lucide="sparkles"></i><b>Subir promo</b><small>Banner para campanas</small></span></label>
-                  <button class="pill-btn primary" type="submit"><i data-lucide="upload-cloud"></i>Guardar personalizacion</button>
-                </form>
-                <div class="upload-map">
-                  <article><i data-lucide="badge-info"></i><strong>Logo</strong><span>Aparece en barra superior, menu lateral y pantalla inicial.</span></article>
-                  <article><i data-lucide="image"></i><strong>Portada</strong><span>Imagen grande del inicio, ideal para mostrar el ambiente.</span></article>
-                  <article><i data-lucide="badge-percent"></i><strong>Promo</strong><span>Reservada para banners y campanas futuras.</span></article>
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div class="toast" id="toast"></div>
-        <div class="reservation-alert" id="reservationAlert">
-          <div>
-            <span>Nueva reserva</span>
-            <strong id="reservationAlertTitle">Cita recibida</strong>
-          </div>
-          <button class="ghost-btn" id="viewNewReservation" type="button"><i data-lucide="eye"></i>Ver reserva</button>
-          <button class="icon-btn" id="stopReservationAlert" type="button" aria-label="Detener alerta"><i data-lucide="bell-off"></i></button>
+        <div class="map-frame">
+          <iframe title="Mapa de Visionary Barber Studio" src="https://www.google.com/maps/embed?pb=!4v1784305552231!6m8!1m7!1sNJT28cCioNLrMkbsL9ixbw!2m2!1d7.060646504516316!2d-73.85305777729019!3f321.9462546147049!4f2.199294689585784!5f1.5370213448934535" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <a class="map-link" href="https://www.google.com/maps?q=7.060646504516316,-73.85305777729019" target="_blank" rel="noopener" aria-label="Abrir ruta a Visionary Barber Studio en Google Maps">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7.2 7.2 0 0 0-7.2 7.2c0 5.2 6.1 12.1 6.4 12.4a1.1 1.1 0 0 0 1.6 0c.3-.3 6.4-7.2 6.4-12.4A7.2 7.2 0 0 0 12 2Zm0 9.8a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z"/></svg>
+            Ver ruta
+          </a>
         </div>
-        <div class="loader-layer" id="loaderLayer">
-          <div class="loader-card">
-            <span class="loader-ring"></span>
-            <strong>Guardando reserva</strong>
-            <small>Estamos bloqueando tu horario en tiempo real.</small>
-          </div>
-        </div>
-        <div class="success-layer" id="successLayer">
-          <div class="success-card">
-            <span class="success-check"><i data-lucide="check"></i></span>
-            <strong>Reserva confirmada</strong>
-            <small>Tu cita quedo agendada correctamente.</small>
-            <button class="pill-btn primary" id="closeSuccess" type="button">Listo</button>
-          </div>
-        </div>
-        <div class="success-layer" id="conflictLayer">
-          <div class="success-card conflict-card">
-            <span class="success-check conflict-icon"><i data-lucide="clock-alert"></i></span>
-            <strong>Horario reservado</strong>
-            <small>Lo sentimos, ese horario acaba de ser reservado por otro cliente en este mismo momento.</small>
-            <button class="pill-btn primary" id="closeConflict" type="button">Elegir otro horario</button>
-          </div>
-        </div>
-        <div class="modal-layer" id="professionalModal">
-          <form class="modal-card form-grid" id="professionalForm">
-            <div class="modal-head">
-              <div><span>Profesional</span><h3 id="professionalModalTitle">Agregar profesional</h3></div>
-              <button class="icon-btn" type="button" data-close-modal="professionalModal" aria-label="Cerrar"><i data-lucide="x"></i></button>
-            </div>
-            <input type="hidden" id="professionalId" />
-            <label>Nombre<input id="professionalName" required /></label>
-            <label>Especialidad<input id="professionalRole" required /></label>
-            <label class="file-drop"><input id="professionalPhotoFile" type="file" accept="image/*" /><span><i data-lucide="camera"></i><b>Subir foto</b><small>Desde tu computador</small></span></label>
-            <label>Foto URL<input id="professionalPhoto" placeholder="Opcional si no subes archivo" /></label>
-            <div class="availability-box">
-              <strong>Dias disponibles</strong>
-              <div class="weekday-grid" id="professionalWeekdays">
-                <label><input type="checkbox" value="1" checked />Lun</label>
-                <label><input type="checkbox" value="2" checked />Mar</label>
-                <label><input type="checkbox" value="3" checked />Mie</label>
-                <label><input type="checkbox" value="4" checked />Jue</label>
-                <label><input type="checkbox" value="5" checked />Vie</label>
-                <label><input type="checkbox" value="6" checked />Sab</label>
-                <label><input type="checkbox" value="0" />Dom</label>
-              </div>
-            </div>
-            <label>Hora inicio<input id="professionalStartTime" type="time" value="09:00" required /></label>
-            <label>Hora fin<input id="professionalEndTime" type="time" value="18:30" required /></label>
-            <button class="pill-btn primary" type="submit"><i data-lucide="save"></i>Guardar profesional</button>
-          </form>
-        </div>
-        <div class="modal-layer" id="serviceModal">
-          <form class="modal-card form-grid" id="serviceForm">
-            <div class="modal-head">
-              <div><span>Servicio</span><h3 id="serviceModalTitle">Agregar servicio</h3></div>
-              <button class="icon-btn" type="button" data-close-modal="serviceModal" aria-label="Cerrar"><i data-lucide="x"></i></button>
-            </div>
-            <input type="hidden" id="serviceId" />
-            <label>Servicio<input id="serviceName" required /></label>
-            <label>Duracion minutos<input id="serviceDuration" type="number" min="10" step="5" required /></label>
-            <label>Precio COP<input id="servicePrice" type="number" min="0" step="1000" required /></label>
-            <button class="pill-btn primary" type="submit"><i data-lucide="save"></i>Guardar servicio</button>
-          </form>
-        </div>
-        <div class="modal-layer" id="appointmentDetailModal">
-          <div class="modal-card appointment-detail-card">
-            <div class="modal-head">
-              <div><span>Detalle de reserva</span><h3 id="appointmentDetailTitle">Servicio agendado</h3></div>
-              <button class="icon-btn" type="button" data-close-modal="appointmentDetailModal" aria-label="Cerrar"><i data-lucide="x"></i></button>
-            </div>
-            <div id="appointmentDetailBody"></div>
-          </div>
-        </div>
-        <div class="modal-layer" id="settlementModal">
-          <form class="modal-card form-grid settlement-card" id="settlementForm">
-            <div class="modal-head">
-              <div><span>Cuenta del barbero</span><h3 id="settlementTitle">Registrar movimiento</h3></div>
-              <button class="icon-btn" type="button" data-close-modal="settlementModal" aria-label="Cerrar"><i data-lucide="x"></i></button>
-            </div>
-            <input type="hidden" id="settlementProfessionalId" />
-            <input type="hidden" id="settlementType" />
-            <div class="settlement-summary" id="settlementSummary"></div>
-            <label>Monto COP<input id="settlementAmount" type="number" min="0" step="1000" required /></label>
-            <label>Nota<input id="settlementNote" placeholder="Motivo del descuento o liquidacion" /></label>
-            <button class="pill-btn primary" type="submit"><i data-lucide="save"></i>Guardar movimiento</button>
-          </form>
-        </div>
-      </main>
-    </div>
+      </section>
+    </section>
+  </main>
 
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="app.js"></script>
-  </body>
+  <script src="app.js"></script>
+</body>
 </html>
