@@ -1,7 +1,19 @@
 const actionCards = document.querySelectorAll(".action-card");
 const backgroundVideo = document.querySelector(".background-video");
 const soundToggle = document.querySelector(".sound-toggle");
+const whatsappCard = document.querySelector('[data-network="whatsapp"]');
 let activeTimer;
+
+const isMobileDevice = () => /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+const buildWhatsAppLinks = (phone, message) => {
+  const encodedMessage = encodeURIComponent(message);
+
+  return {
+    app: `whatsapp://send?phone=${phone}&text=${encodedMessage}`,
+    web: `https://api.whatsapp.com/send?phone=${phone}&text=${encodedMessage}`,
+  };
+};
 
 actionCards.forEach((card) => {
   card.addEventListener("pointerdown", () => {
@@ -17,6 +29,35 @@ actionCards.forEach((card) => {
 
 window.addEventListener("pageshow", () => {
   actionCards.forEach((item) => item.classList.remove("is-active"));
+});
+
+whatsappCard?.addEventListener("click", (event) => {
+  const phone = whatsappCard.dataset.phone;
+  const message = whatsappCard.dataset.message || "";
+
+  if (!phone || !isMobileDevice()) return;
+
+  event.preventDefault();
+
+  const links = buildWhatsAppLinks(phone, message);
+  const fallbackTimer = window.setTimeout(() => {
+    window.location.href = links.web;
+  }, 900);
+
+  const clearFallback = () => {
+    window.clearTimeout(fallbackTimer);
+  };
+
+  window.addEventListener("pagehide", clearFallback, { once: true });
+  document.addEventListener(
+    "visibilitychange",
+    () => {
+      if (document.hidden) clearFallback();
+    },
+    { once: true }
+  );
+
+  window.location.href = links.app;
 });
 
 const updateSoundButton = () => {
