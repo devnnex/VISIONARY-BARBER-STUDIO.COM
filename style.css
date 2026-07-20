@@ -700,7 +700,6 @@ h1 {
   height: 100%;
   min-height: 112px;
   border: 0;
-  filter: grayscale(1) contrast(1.06) brightness(0.78);
 }
 
 .map-link {
